@@ -19,7 +19,7 @@ env:
 
 jobs:
   test:
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/test-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/test-generic.yaml@main
     with:
       app_name: squid-ui
       language: node
@@ -30,7 +30,7 @@ jobs:
     vars: inherit
 
   build:
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/build-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/build-generic.yaml@main
     with:
       app_name: squid-ui
       docker_user: ${{ vars.DOCKER_USER }}
@@ -44,7 +44,7 @@ jobs:
   deployDev:
     if: ${{ cloudbees.scm.branch != 'main' }}
     environment: squid-dev
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/deploy-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/deploy-generic.yaml@main
     needs: [test, build]
     with:
       component_name: squid-ui
@@ -61,7 +61,7 @@ jobs:
   deployPreProd:
     if: ${{ cloudbees.scm.branch == 'main' }}
     environment: squid-preprod
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/deploy-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/deploy-generic.yaml@main
     needs: [test, build]
     with:
       component_name: squid-ui
@@ -78,7 +78,7 @@ jobs:
   deployProd:
     if: ${{ cloudbees.scm.branch == 'main' }}
     environment: squid-prod
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/deploy-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/deploy-generic.yaml@main
     needs: [test, build, deployPreProd]
     with:
       component_name: squid-ui
@@ -95,7 +95,7 @@ jobs:
   triggerRelease:
     if: false  # Disabled to avoid Unify rate limits - change to 'cloudbees.scm.branch == main' to enable
     needs: [test, build, deployPreProd]
-    uses: github.com/cb-squidstack/cb-squidstack/.cloudbees/workflows/release-generic.yaml@main
+    uses: github.com/squidstack/squidstack/.cloudbees/workflows/release-generic.yaml@main
     with:
       component_name: squid-ui
       component_id: "0459d9f1-4f37-4db1-bfb4-e2e1731a0975"
