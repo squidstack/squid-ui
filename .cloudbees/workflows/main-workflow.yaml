@@ -53,7 +53,7 @@ jobs:
       artifact_id: ${{ needs.build.outputs.PRIMARY_ARTIFACT_ID }}
       version: ${{ needs.build.outputs.VERSION }}
       commit_sha: ${{ cloudbees.scm.sha }}
-      hostname: squid-dev.guru-rep.sa-demo.beescloud.com
+      hostname: squid-dev.aib-unify-demo.sa-demo.beescloud.com
       feature_flags_enabled: "true"
     secrets: inherit
     vars: inherit
@@ -70,7 +70,7 @@ jobs:
       artifact_id: ${{ needs.build.outputs.PRIMARY_ARTIFACT_ID }}
       version: ${{ needs.build.outputs.VERSION }}
       commit_sha: ${{ cloudbees.scm.sha }}
-      hostname: squid-preprod.guru-rep.sa-demo.beescloud.com
+      hostname: squid-preprod.aib-unify-demo.sa-demo.beescloud.com
       feature_flags_enabled: "true"
     secrets: inherit
     vars: inherit
@@ -87,7 +87,7 @@ jobs:
       artifact_id: ${{ needs.build.outputs.PRIMARY_ARTIFACT_ID }}
       version: ${{ needs.build.outputs.VERSION }}
       commit_sha: ${{ cloudbees.scm.sha }}
-      hostname: squid.guru-rep.sa-demo.beescloud.com
+      hostname: squid.aib-unify-demo.sa-demo.beescloud.com
       feature_flags_enabled: "true"
     secrets: inherit
     vars: inherit
