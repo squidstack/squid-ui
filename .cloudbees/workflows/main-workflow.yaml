@@ -77,15 +77,15 @@ jobs:
     vars: inherit
 
   triggerRelease:
-    if: false  # Disabled to avoid Unify rate limits - change to 'cloudbees.scm.branch == main' to enable
+    if: ${{ cloudbees.scm.branch == 'main' }}
     needs: [test, build, deployInteg]
     uses: github.com/squidstack/squidstack/.cloudbees/workflows/release-generic.yaml@main
     with:
       component_name: squid-ui
-      component_id: "0459d9f1-4f37-4db1-bfb4-e2e1731a0975"
+      component_id: "1c1bf9f6-12d8-49c8-8333-0898b2ec255b"
       version: ${{ needs.build.outputs.VERSION }}
       smart_tests_build_name: ${{ needs.test.outputs.SMART_TESTS_BUILD_NAME }}
-      environment: squid-demo-3
+      environment: squid-preprod
       release_name_prefix: "squid-ui"
     secrets: inherit
     vars: inherit  
