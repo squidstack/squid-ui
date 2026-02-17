@@ -15,6 +15,7 @@ env:
   LANGUAGE: node
   COVERAGE_ROOT: src
   DEBUG: "true"
+  # Integration environment: squid-integ
   
 
 jobs:
