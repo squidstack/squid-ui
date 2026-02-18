@@ -89,3 +89,5 @@ jobs:
       release_name_prefix: "squid-ui"
     secrets: inherit
     vars: inherit  
+
+    
